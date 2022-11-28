@@ -16,6 +16,12 @@ import java.util.*;
 
 public class XLProcessing {
 
+    /**
+     *
+     * Was written for java client version 8
+     * Not useful in our case
+     *
+     */
     public List<CvElastic> sheetToCVElasticList() {
         List<CvElastic> docs = new ArrayList<>();
         try {
@@ -64,6 +70,11 @@ public class XLProcessing {
         }
     }
 
+    /**
+     *
+     * @return BulkRequest object containing all the IndexRequest objects of data from imm.xlsx sheet
+     *
+     */
     public BulkRequest getBulkRequest() {
         BulkRequest request = new BulkRequest();
 
@@ -96,6 +107,13 @@ public class XLProcessing {
         return request;
     }
 
+    /**
+     *
+     * @param row A row of data from Excel file being used to import data
+     * @return IndexRequest object
+     * @throws IOException
+     *
+     */
     private IndexRequest getRestHighLevelClientIndexRequest(Row row) throws IOException {
         XContentBuilder builder;
         try {
