@@ -95,7 +95,6 @@ public class XLProcessing {
                     count++;
                 } catch (Exception ex) {
                     PrintUtil.println(ex.getLocalizedMessage());
-                    continue;
                 }
             }
             PrintUtil.println(String.format("%d values added to list", --count));
@@ -123,7 +122,9 @@ public class XLProcessing {
                 builder.field("id", row.getCell(0).getStringCellValue());
                 builder.field("make", row.getCell(1).getStringCellValue());
                 builder.field("model", row.getCell(2).getStringCellValue());
-                builder.field("makemodel", row.getCell(1).getStringCellValue() + " " + row.getCell(2).getStringCellValue());
+                String makeModel = row.getCell(1).getStringCellValue() + " " + row.getCell(2).getStringCellValue();
+                builder.field("makemodel", makeModel);
+                builder.field("makemodelfuzzy", makeModel);
                 builder.field("vertical", "CV");
                 builder.field("cvVehicleClass", "MISCD");
 
